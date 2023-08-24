@@ -1,0 +1,32 @@
+.newlisting form div {
+  display: flex;
+}
+.newlisting textarea {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.newlisting input {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+.newlisting form {
+  padding: 30px;
+}
+@media screen and (max-width: 768px) {
+  .newlisting h4 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .newlisting form div {
+    flex-direction: column;
+  }
+  .newlisting input {
+    width: 100%;
+  }
+}

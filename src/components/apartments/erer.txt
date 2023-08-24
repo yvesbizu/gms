@@ -1,0 +1,26 @@
+handleBooking = async (event) => {
+    event.preventDefault();
+    try {
+      this.setState({ loading: true });
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const accomodationContract = new ethers.Contract(this.accommodationContractAddress, Accommodation, signer);
+      const tx = await accomodationContract.bookAccitem(
+        this.props.params.id,
+        {
+          value: this.state.price, // Convert price to Wei
+        }
+      );
+
+      this.setState({ loading: false });
+
+      await tx.wait();
+      alert('Apartment booked successfully!');
+      // Redirect to another page after the transaction is processed
+      window.location.href = '/mybookings';
+    } catch (err) {
+      console.log(err);
+      alert('Failed to book apartment.');
+      this.setState({ loading: false });
+    }
+  }
